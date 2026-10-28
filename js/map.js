@@ -33,7 +33,8 @@
     castle: { desc: 'Đích đến của hành trình: lễ tốt nghiệp ngày 07.11.2026.', kind: 'invite' }
   };
   var PROJECTS = [
-    { title: '360Retail', sub: 'Nền tảng SaaS quản lý bán lẻ · nhóm 5 người', time: '08/2025 – nay', art: 'crystal',
+    {
+      title: '360Retail', sub: 'Nền tảng SaaS quản lý bán lẻ · nhóm 5 người', time: '08/2025 – nay', art: 'crystal',
       tags: ['.NET 8', 'PostgreSQL', 'Redis', 'Ocelot', 'Docker', 'GitHub Actions'],
       stats: [['5', 'microservice'], ['8', 'container Docker'], ['29', 'bài test tự động mỗi build']],
       points: ['Thiết kế và xây dựng 5 microservice (Identity, Subscription/Payment, POS/Sales, HR, CRM), đã chạy production.',
@@ -42,12 +43,15 @@
         'Module POS tự trừ tồn kho, xuất báo cáo Excel; tăng tốc đọc dữ liệu bằng Redis cache.',
         'Chuyển yêu cầu nghiệp vụ (gói thuê bao, giới hạn tính năng) thành API contract và mô hình dữ liệu.',
         'Docker Compose 8 container, CI/CD bằng GitHub Actions chạy 29 bài test tự động mỗi lần build.'],
-      diagram: 'retail', links: [['Xem sản phẩm', 'https://360retail-cortexa.online']] },
-    { title: 'TreeShop', sub: 'REST API backend quản lý cửa hàng', time: '', art: 'tree',
+      diagram: 'retail', links: [['Xem sản phẩm', 'https://360retail-cortexa.online']]
+    },
+    {
+      title: 'TreeShop', sub: 'REST API backend quản lý cửa hàng', time: '', art: 'tree',
       tags: ['ASP.NET Core 8', 'SQL Server 2022', 'Docker', 'JWT', 'Swagger'],
       points: ['REST API quản lý cửa hàng với xác thực JWT, SQL Server 2022 và tài liệu Swagger.',
         'Đóng gói bằng Docker Compose, tự khởi tạo cơ sở dữ liệu; cấu hình CORS cho client Flutter và React.'],
-      links: [['Mã nguồn trên GitHub', 'https://github.com/TranMinh0903/TreeShop']] }
+      links: [['Mã nguồn trên GitHub', 'https://github.com/TranMinh0903/TreeShop']]
+    }
   ];
   var ICO = {
     mail: '<path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/>',
@@ -84,17 +88,18 @@
     var inf = INFO[id], h = '';
     if (inf.kind === 'about') {
       h = '<div class="mp-char"><div class="mp-charcard"><svg viewBox="0 0 200 330" aria-hidden="true"><use href="#cardBack"/></svg></div>' +
-        '<dl class="mp-stats">' + [['Tên nhân vật', 'Trần Hoàng Tuấn Minh'], ['Lớp', 'Backend Developer · C# / .NET'], ['Học viện', 'Đại học FPT TP.HCM'],
-          ['Thành tích', '4 kỳ Sinh viên xuất sắc (Dean’s List)'], ['Nhiệm vụ', 'Tìm vị trí Graduate / Fresher Developer']].map(function (r) {
-          return '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('') + '</dl></div>' +
+        '<dl class="mp-stats">' + [['Tên nhân vật', 'Nguyễn Bùi Hoàng Phúc'], ['Lớp', 'Backend Developer · C# / .NET'], ['Học viện', 'Đại học FPT TP.HCM'],
+        ['Thành tích', '4 kỳ Sinh viên xuất sắc (Dean’s List)'], ['Nhiệm vụ', 'Tìm vị trí Graduate / Fresher Developer']].map(function (r) {
+          return '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>';
+        }).join('') + '</dl></div>' +
         '<p class="mp-bio mp-anim" style="--i:1">Mình là sinh viên năm cuối ngành Kỹ thuật Phần mềm tại Đại học FPT (đã hoàn thành toàn bộ chương trình học), tập trung vào phát triển backend với C#, .NET 8 và ASP.NET Core. Mình đã thực tập Backend tại FPT Software và cùng nhóm xây dựng nền tảng microservices gồm 5 service đang chạy thực tế. Mình đang tìm vị trí Graduate / Fresher Software Developer trong một đội Agile.</p>';
     } else if (inf.kind === 'timeline') {
       var tl = [['09/2022', 'Nhập học Đại học FPT TP.HCM', 'Ngành Kỹ thuật Phần mềm (B.E.).'],
-        ['2024', 'Chứng chỉ Software Development Lifecycle', 'University of Minnesota, học trên Coursera.'],
-        ['2024 – 2026', 'Dean’s List · Sinh viên xuất sắc', 'Summer 2024, Fall 2024, Fall 2025 và Spring 2026.'],
-        ['05 – 09/2025', 'Thực tập (OJT) tại FPT Software', 'Backend Developer Intern, dự án đặt vé xem phim trực tuyến.'],
-        ['2026', 'Đồ án tốt nghiệp SmartCanteen', 'Hệ thống robot phục vụ món ăn.'],
-        ['07.11.2026', 'Lễ tốt nghiệp', 'Chính thức trở thành tân cử nhân Kỹ thuật Phần mềm.']];
+      ['2024', 'Chứng chỉ Software Development Lifecycle', 'University of Minnesota, học trên Coursera.'],
+      ['2024 – 2026', 'Dean’s List · Sinh viên xuất sắc', 'Summer 2024, Fall 2024, Fall 2025 và Spring 2026.'],
+      ['05 – 09/2025', 'Thực tập (OJT) tại FPT Software', 'Backend Developer Intern, dự án đặt vé xem phim trực tuyến.'],
+      ['2026', 'Đồ án tốt nghiệp SmartCanteen', 'Hệ thống robot phục vụ món ăn.'],
+      ['07.11.2026', 'Lễ tốt nghiệp', 'Chính thức trở thành tân cử nhân Kỹ thuật Phần mềm.']];
       h = '<ol class="mp-tl">' + tl.map(function (t, i) {
         return '<li class="mp-anim" style="--i:' + i + '"><span class="mp-tl-dot"></span><b>' + t[0] + '</b><h4>' + t[1] + '</h4><p>' + t[2] + '</p></li>';
       }).join('') + '</ol>' +
@@ -125,11 +130,11 @@
         '<p class="mp-note">Kho mã: SmartCanteen-RobotService</p>';
     } else if (inf.kind === 'skills') {
       var groups = [['Ngôn ngữ', ['C#*', 'SQL', 'JavaScript / TypeScript', 'Python (cơ bản)']],
-        ['Backend', ['ASP.NET Core Web API*', 'Entity Framework Core*', 'RESTful API', 'SignalR', 'OOP', 'Dependency Injection']],
-        ['Kiến trúc', ['Microservices*', 'API Gateway (Ocelot)', 'JWT / OAuth 2.0', 'Phân quyền theo vai trò']],
-        ['Cơ sở dữ liệu', ['SQL Server*', 'PostgreSQL', 'Redis']],
-        ['DevOps & công cụ', ['Docker*', 'Docker Compose', 'GitHub Actions (CI/CD)', 'Git', 'Agile', 'Claude Code']],
-        ['Phân tích', ['Phân tích yêu cầu', 'Mô hình dữ liệu', 'Sơ đồ hệ thống / sequence / activity (draw.io)']]];
+      ['Backend', ['ASP.NET Core Web API*', 'Entity Framework Core*', 'RESTful API', 'SignalR', 'OOP', 'Dependency Injection']],
+      ['Kiến trúc', ['Microservices*', 'API Gateway (Ocelot)', 'JWT / OAuth 2.0', 'Phân quyền theo vai trò']],
+      ['Cơ sở dữ liệu', ['SQL Server*', 'PostgreSQL', 'Redis']],
+      ['DevOps & công cụ', ['Docker*', 'Docker Compose', 'GitHub Actions (CI/CD)', 'Git', 'Agile', 'Claude Code']],
+      ['Phân tích', ['Phân tích yêu cầu', 'Mô hình dữ liệu', 'Sơ đồ hệ thống / sequence / activity (draw.io)']]];
       h = '<div class="mp-skills">' + groups.map(function (g, i) {
         return '<div class="mp-skg mp-anim" style="--i:' + i + '"><h4><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#spark"/></svg>' + g[0] + '</h4><div class="mp-chips">' +
           g[1].map(function (c) { var hi = c.slice(-1) === '*'; return '<i' + (hi ? ' class="hi"' : '') + '>' + esc(hi ? c.slice(0, -1) : c) + '</i>'; }).join('') + '</div></div>';
@@ -175,8 +180,8 @@
 
   /* ---------- phần tử ---------- */
   var map = $('#map'), vp = $('#mpVp'), worldEl = $('#mpWorld'), cloudsEl = $('#mpClouds'), fxC = $('#mpFx'), fx = fxC.getContext('2d'),
-      fgEl = $('#mpFg'), tip = $('#mpTip'), panel = $('#mpPanel'), book = $('#mpBook'), dais = $('#mpDais'), say = $('#mpSay'),
-      listEl = $('#mpList'), listBtn = $('#mpListBtn'), toast = $('#mpToast');
+    fgEl = $('#mpFg'), tip = $('#mpTip'), panel = $('#mpPanel'), book = $('#mpBook'), dais = $('#mpDais'), say = $('#mpSay'),
+    listEl = $('#mpList'), listBtn = $('#mpListBtn'), toast = $('#mpToast');
   var W = 0, H = 0, DPR = 1, built = false, isOpen = false, opener = null;
   var cam = { x: 800, y: 505, s: 1 }, tween = null, inertia = null, idleT = 0;
   var svg, gRot, plqG, stoneEls = [], dense = [], locEls = {}, plqEls = {}, fogEls = {};

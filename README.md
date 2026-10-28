@@ -1,40 +1,26 @@
-# Thư Mời Tốt Nghiệp · Trần Hoàng Tuấn Minh
+# Thư Mời Tốt Nghiệp · Nguyễn Bùi Hoàng Phúc
 
-Trang web thư mời dự lễ tốt nghiệp kiêm portfolio cá nhân, theo chủ đề **thẻ bài tarot phép thuật**. Trang có bản đồ hành trình 2.5D để khám phá như trong game.
+Trang web thư mời dự lễ tốt nghiệp của Nguyễn Bùi Hoàng Phúc theo phong cách **Kỹ sư Phần mềm hiện đại**, kết hợp tông màu nhận diện sinh viên FPT (**Cam FPT & Xanh Navy**).
 
-> Lễ tốt nghiệp: **Thứ Bảy, 07.11.2026 · từ 12h30** tại Trường Đại học FPT TP.HCM (Lô E2a-7, Đường D1, Khu Công nghệ cao, TP.HCM)
+> Lễ tốt nghiệp: **Thứ Bảy, 07.11.2026 · 17h** tại Trường Đại học FPT TP.HCM (Lô E2a-7, Đường D1, Khu Công nghệ cao, TP.HCM)
 
 ## Tính năng
 
 **Màn mở đầu**
-- Bộ bài trên quyển sách phép. Chọn một lá thì lá bài bay ra giữa màn hình, xoay, phát sáng rồi lật ra ảnh chân dung.
-- Các lá còn lại tan thành hàng trăm lá bài nhỏ, bay xếp thành tên.
+- Bệ đỡ thẻ cử nhân hiện đại. Chọn một thẻ thì thẻ bay ra giữa màn hình, xoay và lật mở ảnh chân dung Tân Cử Nhân 2026.
+- Các thẻ còn lại tan thành các hạt công nghệ, bay xếp thành tên chủ nhân buổi lễ.
 
 **Thư mời**
-- Lời cảm ơn, trải bài ba lá (quá khứ, hiện tại, tương lai), album kỷ niệm.
-- Phong bì thư mời có đếm ngược tới ngày lễ (theo giờ Việt Nam) và nút xem đường đi.
-
-**Bản đồ hành trình 2.5D**
-- Kéo để di chuyển, cuộn chuột hoặc chụm hai ngón để phóng to.
-- Mèo phù thủy dẫn đường, sương mờ tan khi khám phá, đếm tiến độ x/8.
-- 8 địa điểm ứng với các phần của portfolio:
-
-| # | Địa điểm | Nội dung |
-|---|----------|----------|
-| 1 | Làng Khởi Đầu | Giới thiệu bản thân |
-| 2 | Thư Viện Cổ | Học vấn và các cột mốc |
-| 3 | Xưởng Giả Kim | Kinh nghiệm thực tập Backend tại FPT Software |
-| 4 | Vườn Pha Lê | Dự án .NET: 360Retail, TreeShop |
-| 5 | Lều Người Máy | Đồ án tốt nghiệp SmartCanteen |
-| 6 | Đài Thiên Văn | Kỹ năng |
-| 7 | Tháp Cú Thư | Liên hệ |
-| 8 | Lâu Đài Tốt Nghiệp | Quay về thư mời |
+- Lời cảm ơn thầy cô, gia đình và bạn bè.
+- 3 cột mốc đáng nhớ: Thời sinh viên tại FPT University, Ngày lễ tốt nghiệp và Khởi đầu hành trình Kỹ sư Phần mềm.
+- Album kỷ niệm những khoảnh khắc đáng nhớ.
+- Phong bì thư mời trang trọng có đếm ngược ngày lễ (theo giờ Việt Nam) và nút xem đường đi Google Maps.
 
 **Hiệu ứng nền**
-- Trời sao, sao băng, thẻ bài bay theo khi cuộn, vệt lấp lánh theo con trỏ.
+- Nền trời đêm công nghệ kèm lưới tọa độ tinh tế, hạt ánh sáng bokeh Cam FPT & Xanh Cyan.
 
 **Khả năng truy cập**
-- Responsive từ điện thoại đến màn hình lớn.
+- Responsive tối ưu từ điện thoại đến máy tính.
 - Tôn trọng tùy chọn giảm chuyển động (`prefers-reduced-motion`).
 - Điều khiển được bằng bàn phím (Tab, Enter, Esc).
 
@@ -42,7 +28,7 @@ Trang web thư mời dự lễ tốt nghiệp kiêm portfolio cá nhân, theo ch
 
 HTML, CSS và JavaScript thuần, không dùng framework và **không cần bước build**.
 
-- Toàn bộ hình minh họa (thẻ bài, công trình, cây cối, mèo...) được vẽ bằng **SVG sinh từ code**.
+- Toàn bộ hình minh họa (nón cử nhân, developer badge, laptop/terminal...) được vẽ bằng **SVG sinh từ code**.
 - Hiệu ứng hạt và chữ dùng **Canvas 2D**.
 - Font: Baloo 2, Nunito, Mali (Google Fonts, hỗ trợ tiếng Việt).
 
@@ -52,12 +38,10 @@ HTML, CSS và JavaScript thuần, không dùng framework và **không cần bư�
 .
 ├── index.html          # Bố cục trang và nội dung thư mời
 ├── css/
-│   └── style.css       # Toàn bộ giao diện
+│   └── style.css       # Toàn bộ giao diện (Cam FPT & Xanh Navy)
 ├── js/
-│   ├── sprite.js       # Bộ hình SVG: thẻ bài, trăng, mũ, sách, mèo...
-│   ├── main.js         # Màn mở đầu, hiệu ứng nền, đếm ngược, khung ảnh
-│   ├── iso.js          # Vẽ bản đồ 2.5D (công trình, cây, đường đá)
-│   └── map.js          # Bản đồ tương tác và nội dung từng địa điểm
+│   ├── sprite.js       # Bộ hình SVG: nón cử nhân, thẻ developer, laptop...
+│   └── main.js         # Màn mở đầu, hiệu ứng hạt, đếm ngược, khung ảnh
 └── assets/
     └── images/         # Ảnh cá nhân: chân dung, trải bài, album
 ```
@@ -77,26 +61,11 @@ python -m http.server 8000
 | Muốn sửa | Ở đâu |
 |----------|-------|
 | Lời cảm ơn, thư mời, giờ lễ, địa điểm | `index.html` |
-| Nội dung các địa điểm trên bản đồ (giới thiệu, dự án, kỹ năng, liên hệ) | `js/map.js`: `INFO`, `PROJECTS`, hàm `bodyFor` |
-| Tên và nhãn các địa điểm | `js/iso.js`: mảng `LOC` |
-| Giờ lễ và đếm ngược | `js/main.js` và `js/map.js`: `EV_START`, `EV_END` (giờ UTC) |
+| Giờ lễ và đếm ngược | `js/main.js`: `EV_START`, `EV_END` (giờ UTC) |
 | Màu sắc, font | `css/style.css`: biến trong `:root` |
 
-**Về ảnh:** ảnh chính thức nằm trong `assets/images/` và được gắn vào khung qua thuộc tính `data-src` trong `index.html` (ví dụ `data-src="assets/images/chan-dung.jpg"`). Khung đã có ảnh sẽ hiển thị cố định. Khung chưa có ảnh vẫn cho bấm để xem thử ảnh trên máy mình; ảnh thử này **không được lưu và không gửi đi đâu**. Ảnh nên được thu nhỏ (khoảng 1000px) và xóa thông tin EXIF trước khi đưa vào.
-
-## Triển khai
-
-**Vercel**
-1. Import repository này trên vercel.com.
-2. Framework Preset chọn **Other**, để trống Build Command và Output Directory.
-3. Bấm **Deploy**.
-
-**GitHub Pages**
-1. Vào *Settings → Pages*.
-2. Ở mục *Source*, chọn **Deploy from a branch**, nhánh `main`, thư mục `/ (root)`.
+**Về ảnh:** ảnh chính thức nằm trong `assets/images/` và được gắn vào khung qua thuộc tính `data-src` trong `index.html` (ví dụ `data-src="assets/images/chan-dung.jpg"`).
 
 ## Tác giả
 
-**Trần Hoàng Tuấn Minh**, Backend Developer · C# / .NET, Đại học FPT TP.HCM
-- GitHub: [TranMinh0903](https://github.com/TranMinh0903)
-- LinkedIn: [tranhoangtuanminh](https://www.linkedin.com/in/tranhoangtuanminh)
+**Nguyễn Bùi Hoàng Phúc**, Kỹ thuật Phần mềm, Đại học FPT TP.HCM

@@ -1,18 +1,18 @@
-/* ===== Thư mời của Tuấn Minh — hiệu ứng ===== */
+/* ===== Thư mời của Hoàng Phúc — hiệu ứng ===== */
 (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
-  var INK = '#2B1C7A', PURPLE = '#6E56F0', WHITE = '#FFFFFF';
-  var PCOLORS = ['#FFD54A', '#FF9ED2', '#FFFFFF', '#CFC6FF', '#FFB347'];
+  var INK = '#0F172A', PRIMARY = '#F26F21', WHITE = '#FFFFFF';
+  var PCOLORS = ['#F26F21', '#38BDF8', '#FFFFFF', '#FB923C', '#94A3B8'];
   var NAME_FONT = '"Baloo 2","Nunito",ui-rounded,system-ui,sans-serif';
-  var LINES = [{ t: 'Trần Hoàng', s: 124, y: 150 }, { t: 'Tuấn Minh', s: 150, y: 310 }];
+  var LINES = [{ t: 'Nguyễn Bùi ', s: 124, y: 150 }, { t: 'Hoàng Phúc', s: 150, y: 310 }];
   var rand = function (a, b) { return a + Math.random() * (b - a); };
   var clamp = function (v, a, b) { return v < a ? a : v > b ? b : v; };
 
   var hero = $('#top'), table = $('#table'), deckEl = $('#deck'), portrait = $('#portrait'),
-      logoWrap = $('#logoWrap'), welcome = $('#welcome'), after = $('#after'), floatWrap = $('#floaters');
+    logoWrap = $('#logoWrap'), welcome = $('#welcome'), after = $('#after'), floatWrap = $('#floaters');
 
   /* ---------- bộ bài trên sách ---------- */
   var DECK = [
@@ -21,7 +21,7 @@
   ];
   deckEl.innerHTML = DECK.map(function (d, i) {
     return '<button type="button" class="tcard deck-card' + (d.glow ? ' glow' : '') + '" style="--i:' + i + ';--x:' + d.x + ';--y:' + d.y + ';--r:' + d.r + 'deg"' +
-      ' aria-label="Mở lá bài số ' + (i + 1) + '"><svg viewBox="0 0 200 330" aria-hidden="true"><use href="#cardBack"/></svg></button>';
+      ' aria-label="Khám phá thẻ số ' + (i + 1) + '"><svg viewBox="0 0 200 330" aria-hidden="true"><use href="#cardBack"/></svg></button>';
   }).join('');
   var deckCards = $$('.deck-card', deckEl);
 
@@ -68,7 +68,7 @@
     input.addEventListener('change', function () {
       var f = input.files && input.files[0];
       if (!f) return;
-      shrink(f).then(function (data) { show(data); }).catch(function () {});
+      shrink(f).then(function (data) { show(data); }).catch(function () { });
       input.value = '';
     });
   });
@@ -83,8 +83,10 @@
     stars = [];
     for (var i = 0; i < count; i++) {
       var big = Math.random() < 0.12;
-      stars.push({ x: Math.random() * W, y: Math.random() * H, r: big ? rand(3, 6) : rand(0.6, 1.8), big: big,
-        ph: Math.random() * 6.28, sp: rand(0.6, 2.2), d: rand(0.02, 0.12), c: big && Math.random() < 0.5 ? '#FFE27A' : '#FFFFFF' });
+      stars.push({
+        x: Math.random() * W, y: Math.random() * H, r: big ? rand(3, 6) : rand(0.6, 1.8), big: big,
+        ph: Math.random() * 6.28, sp: rand(0.6, 2.2), d: rand(0.02, 0.12), c: big && Math.random() < 0.5 ? '#F26F21' : '#FFFFFF'
+      });
     }
   }
   function sparkPath(ctx, x, y, r) {
@@ -97,8 +99,10 @@
     if (list.length > 700) list.shift();
     opt = opt || {};
     var a = opt.a != null ? opt.a : Math.random() * 6.28, sp = opt.sp != null ? opt.sp : rand(0.2, 1.4);
-    list.push({ x: x, y: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - (opt.up || 0), g: opt.g != null ? opt.g : 0.02,
-      life: 0, max: opt.max || rand(500, 1000), r: opt.r || rand(2, 5), c: opt.c || PCOLORS[(Math.random() * PCOLORS.length) | 0] });
+    list.push({
+      x: x, y: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - (opt.up || 0), g: opt.g != null ? opt.g : 0.02,
+      life: 0, max: opt.max || rand(500, 1000), r: opt.r || rand(2, 5), c: opt.c || PCOLORS[(Math.random() * PCOLORS.length) | 0]
+    });
   }
   function stepParts(ctx, list, dt, offY) {
     for (var i = list.length - 1; i >= 0; i--) {
@@ -122,8 +126,8 @@
   var glowImg = document.createElement('canvas'); glowImg.width = glowImg.height = 64;
   (function () {
     var g = glowImg.getContext('2d'), rg = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-    rg.addColorStop(0, 'rgba(255,248,214,1)'); rg.addColorStop(0.22, 'rgba(255,222,120,.9)');
-    rg.addColorStop(0.55, 'rgba(255,196,80,.28)'); rg.addColorStop(1, 'rgba(255,196,80,0)');
+    rg.addColorStop(0, 'rgba(255,255,255,1)'); rg.addColorStop(0.25, 'rgba(242,111,33,.85)');
+    rg.addColorStop(0.65, 'rgba(242,111,33,.2)'); rg.addColorStop(1, 'rgba(242,111,33,0)');
     g.fillStyle = rg; g.fillRect(0, 0, 64, 64);
   })();
   var glows = [];
@@ -131,8 +135,10 @@
     if (reduce || glows.length > 380) return;
     opt = opt || {};
     var a = opt.a != null ? opt.a : rand(0, 6.283), sp = opt.sp != null ? opt.sp : rand(0.05, 0.4);
-    glows.push({ x: x, y: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - (opt.up != null ? opt.up : 0.35), life: -(opt.delay || 0),
-      max: opt.max || rand(1800, 3600), r: opt.r || rand(6, 16) });
+    glows.push({
+      x: x, y: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - (opt.up != null ? opt.up : 0.35), life: -(opt.delay || 0),
+      max: opt.max || rand(1800, 3600), r: opt.r || rand(6, 16)
+    });
   }
   function drawGlows(dt) {
     var sy0 = window.scrollY;
@@ -214,9 +220,11 @@
         el.innerHTML = '<div class="flip"><div class="face back"><svg viewBox="0 0 200 330"><use href="#cardBack"/></svg></div>' +
           '<div class="face front"><svg viewBox="0 0 200 330"><use href="#' + fronts[i % 3] + '"/></svg></div></div>';
         floatWrap.appendChild(el);
-        floaters.push({ el: el, flip: el.firstChild, side: i % 2 ? 1 : -1, y0: (i + 0.5) / count + rand(-0.05, 0.05),
+        floaters.push({
+          el: el, flip: el.firstChild, side: i % 2 ? 1 : -1, y0: (i + 0.5) / count + rand(-0.05, 0.05),
           speed: rand(0.12, 0.42), ph: Math.random() * 6.28, fs: rand(0.5, 1), r0: rand(-22, 22), ry0: rand(0, 360),
-          lag: 0, k: rand(5, 11), sc: rand(0.82, 1.12) });
+          lag: 0, k: rand(5, 11), sc: rand(0.82, 1.12)
+        });
       }
     }
     var lane = Math.max(0, (W - 1120) / 2);
@@ -282,7 +290,7 @@
         ctx.font = fontAt(l.s);
         ctx.strokeStyle = INK; ctx.lineWidth = 24; ctx.strokeText(l.t, 500, l.y);
         var g = ctx.createLinearGradient(0, l.y - l.s * 0.8, 0, l.y + l.s * 0.1);
-        g.addColorStop(0, '#FFB0DC'); g.addColorStop(0.48, '#FFFFFF'); g.addColorStop(1, '#FFD04A');
+        g.addColorStop(0, '#F26F21'); g.addColorStop(0.48, '#FFFFFF'); g.addColorStop(1, '#38BDF8');
         ctx.fillStyle = g; ctx.fillText(l.t, 500, l.y);
       });
     }
@@ -327,9 +335,11 @@
       var o = origins[(Math.random() * origins.length) | 0];
       var sx = o.x + rand(-o.w * 0.35, o.w * 0.35), sy = o.y + rand(-o.h * 0.35, o.h * 0.35);
       var a = rand(-Math.PI, 0), rr = rand(0.18, 0.5) * R, a2 = a + (Math.random() < 0.5 ? -1 : 1) * rand(1, 2);
-      return { sx: sx, sy: sy, c1x: sx + Math.cos(a) * rr, c1y: sy + Math.sin(a) * rr, c2x: p.x + Math.cos(a2) * rr * 0.5, c2y: p.y + Math.sin(a2) * rr * 0.5,
+      return {
+        sx: sx, sy: sy, c1x: sx + Math.cos(a) * rr, c1y: sy + Math.sin(a) * rr, c2x: p.x + Math.cos(a2) * rr * 0.5, c2y: p.y + Math.sin(a2) * rr * 0.5,
         tx: p.x, ty: p.y, delay: 80 + (p.x - minX) / spanX * 700 + rand(0, 380), dur: rand(950, 1500),
-        spin: rand(-12, 12), rf: rand(-0.25, 0.25), fp: rand(0, 6.28), yel: Math.random() < 0.18, landed: false };
+        spin: rand(-12, 12), rf: rand(-0.25, 0.25), fp: rand(0, 6.28), yel: Math.random() < 0.18, landed: false
+      };
     });
     flyStart = now;
     flyEnd = now + minis.reduce(function (m, q) { return Math.max(m, q.delay + q.dur); }, 0);
@@ -357,9 +367,9 @@
       var fxs = Math.max(0.15, Math.abs(flip)), c = Math.cos(rot), s = Math.sin(rot), kk = DPR * sc;
       fctx.setTransform(c * kk * fxs, s * kk * fxs, -s * kk, c * kk, DPR * x, DPR * (y - sy0));
       fctx.globalAlpha = alpha * Math.min(1, t * 5);
-      fctx.fillStyle = flip < 0 || m.yel ? '#FFC93C' : '#2A2580';
+      fctx.fillStyle = flip < 0 || m.yel ? '#F26F21' : '#1E293B';
       fctx.fillRect(-mw / 2, -mh / 2, mw, mh);
-      fctx.lineWidth = Math.max(0.6, mw * 0.16); fctx.strokeStyle = flip < 0 || m.yel ? INK : '#F5C451';
+      fctx.lineWidth = Math.max(0.6, mw * 0.16); fctx.strokeStyle = flip < 0 || m.yel ? INK : '#F26F21';
       fctx.strokeRect(-mw / 2, -mh / 2, mw, mh);
       if (t < 1 && Math.random() < 0.08) addPart(fxParts, x, y, { sp: rand(0.1, 0.6), g: 0.01, max: rand(380, 700), r: rand(1.6, 3.6) });
       if (t === 1 && !m.landed) { m.landed = true; if (Math.random() < 0.12) addPart(fxParts, x, y, { sp: 0.3, g: 0, max: 420, r: rand(3, 5), c: '#FFFFFF' }); }
@@ -392,14 +402,14 @@
 
   /* ---------- màn mở thẻ: bay ra giữa, nạp sáng, lóe sáng, lật ảnh ---------- */
   var stage = $('#stage'), stageCard = $('#stageCard'), scShake = $('.sc-shake', stage), scFlip = $('.sc-flip', stage),
-      scBack = $('.sc-back', stage), scFront = $('.sc-front', stage), scLightB = $('.sc-back .sc-light', stage), scLightF = $('.sc-front .sc-light', stage),
-      stDim = $('.stage-dim', stage), stRays = $('.stage-rays', stage), stRing = $('.stage-ring', stage), stFlash = $('.stage-flash', stage), stCap = $('.stage-caption', stage);
+    scBack = $('.sc-back', stage), scFront = $('.sc-front', stage), scLightB = $('.sc-back .sc-light', stage), scLightF = $('.sc-front .sc-light', stage),
+    stDim = $('.stage-dim', stage), stRays = $('.stage-rays', stage), stRing = $('.stage-ring', stage), stFlash = $('.stage-flash', stage), stCap = $('.stage-caption', stage);
   var portraitCard = $('.tcard', portrait), stageAnims = [], charge = false, runId = 0;
   function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
   function anim(el, kf, opt) { var a = el.animate(kf, Object.assign({ fill: 'forwards' }, opt)); stageAnims.push(a); return a; }
   function closeStage() {
     charge = false;
-    stageAnims.forEach(function (a) { try { a.cancel(); } catch (e) {} });
+    stageAnims.forEach(function (a) { try { a.cancel(); } catch (e) { } });
     stageAnims = [];
     if (portraitCard.parentNode !== portrait) portrait.appendChild(portraitCard);
     stage.hidden = true; stage.classList.remove('spin'); scBack.hidden = false; scFront.hidden = true;
@@ -442,11 +452,11 @@
       anim(stCap, [{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 450 });
       anim(scLightB, [{ opacity: 0 }, { opacity: 0.97 }], { duration: 1200, easing: 'ease-in' });
       anim(scShake, [
-        { transform: 'rotate(0deg) scale(1)', filter: 'drop-shadow(0 0 0px rgba(205,180,255,0))' },
+        { transform: 'rotate(0deg) scale(1)', filter: 'drop-shadow(0 0 0px rgba(242,111,33,0))' },
         { transform: 'rotate(-1.5deg) scale(1.01)', offset: 0.2 }, { transform: 'rotate(1.5deg) scale(1.02)', offset: 0.34 },
         { transform: 'rotate(-2.5deg) scale(1.03)', offset: 0.48 }, { transform: 'rotate(2.5deg) scale(1.04)', offset: 0.6 },
         { transform: 'rotate(-3deg) scale(1.05)', offset: 0.72 }, { transform: 'rotate(3deg) scale(1.06)', offset: 0.84 },
-        { transform: 'rotate(0deg) scale(1.08)', filter: 'drop-shadow(0 0 36px rgba(205,180,255,1)) drop-shadow(0 0 90px rgba(255,255,255,.8))' }],
+        { transform: 'rotate(0deg) scale(1.08)', filter: 'drop-shadow(0 0 36px rgba(242,111,33,1)) drop-shadow(0 0 90px rgba(56,189,248,.8))' }],
         { duration: 1200, easing: 'ease-in' });
       charge = true;
       return sleep(1200);
@@ -460,11 +470,11 @@
       if (id !== runId) throw 0;
       stage.classList.remove('spin'); scFront.hidden = false;
       anim(scFlip, [{ transform: 'perspective(1400px) rotateY(720deg) scale(1)' }, { transform: 'perspective(1400px) rotateY(1120deg) scale(1.1)', offset: 0.55 },
-        { transform: 'perspective(1400px) rotateY(1260deg) scale(1)' }], { duration: 1200, easing: 'cubic-bezier(.2,.7,.25,1)' });
+      { transform: 'perspective(1400px) rotateY(1260deg) scale(1)' }], { duration: 1200, easing: 'cubic-bezier(.2,.7,.25,1)' });
       anim(scLightF, [{ opacity: 0.97 }, { opacity: 0 }], { duration: 950, easing: 'ease-out' });
       anim(stRing, [{ transform: 'scale(.3)', opacity: 1 }, { transform: 'scale(3.6)', opacity: 0 }], { duration: 950, easing: 'cubic-bezier(.2,.7,.3,1)' });
-      anim(scShake, [{ transform: 'scale(1.08)', filter: 'drop-shadow(0 0 36px rgba(205,180,255,1)) drop-shadow(0 0 90px rgba(255,255,255,.8))' },
-        { transform: 'scale(1)', filter: 'drop-shadow(0 0 26px rgba(255,214,90,.95))' }], { duration: 800, easing: 'ease-out' });
+      anim(scShake, [{ transform: 'scale(1.08)', filter: 'drop-shadow(0 0 36px rgba(242,111,33,1)) drop-shadow(0 0 90px rgba(56,189,248,.8))' },
+      { transform: 'scale(1)', filter: 'drop-shadow(0 0 26px rgba(242,111,33,.95))' }], { duration: 800, easing: 'ease-out' });
       burstAt(W / 2, H / 2, 44, 50);
       return sleep(1700);
     }).then(function () {
@@ -473,7 +483,7 @@
       anim(stDim, [{ opacity: 1 }, { opacity: 0 }], { duration: 700 });
       anim(stRays, [{ opacity: 1 }, { opacity: 0 }], { duration: 500 });
       return anim(stageCard, [{ transform: 'translate(0px,0px) rotate(0deg) scale(1)' },
-        { transform: 'translate(' + (pc.x - W / 2) + 'px,' + (pc.y - H / 2) + 'px) rotate(0deg) scale(' + s1 + ')' }],
+      { transform: 'translate(' + (pc.x - W / 2) + 'px,' + (pc.y - H / 2) + 'px) rotate(0deg) scale(' + s1 + ')' }],
         { duration: 680, easing: 'cubic-bezier(.5,0,.3,1)' }).finished;
     }).then(function () {
       if (id !== runId) throw 0;
@@ -506,8 +516,8 @@
     var id = ++runId;
     hero.classList.add('opened');
     deckCards.forEach(function (c) { c.tabIndex = -1; });
-    $('#heroTitle').textContent = 'Trần Hoàng Tuấn Minh — Thư mời tốt nghiệp';
-    var ready = (document.fonts && document.fonts.load) ? Promise.race([document.fonts.load(fontAt(80), 'Trần Hoàng Tuấn Minh'), sleep(1200)]) : Promise.resolve();
+    $('#heroTitle').textContent = 'Nguyễn Bùi Hoàng Phúc — Thư mời tốt nghiệp';
+    var ready = (document.fonts && document.fonts.load) ? Promise.race([document.fonts.load(fontAt(80), 'Nguyễn Bùi Hoàng Phúc'), sleep(1200)]) : Promise.resolve();
     var co = cardOrigins()[deckCards.indexOf(chosen)];
     for (var gi = 0; gi < 30; gi++) addGlow(co.x + rand(-co.w * 0.6, co.w * 0.6), co.y + rand(-co.h * 0.6, co.h * 0.6), { sp: rand(0.3, 1.6), up: 0.5, r: rand(7, 18), max: rand(1200, 2400), delay: rand(0, 300) });
     var seq = reduce ? Promise.resolve().then(function () {
@@ -517,13 +527,13 @@
     seq.then(function () {
       if (id !== runId) return;
       var origins = burstOthers(chosen);
-      return ready.catch(function () {}).then(function () {
+      return ready.catch(function () { }).then(function () {
         if (id !== runId) return;
         layoutName();
         if (reduce) { finishFlight(); return; }
         startFlight(origins, performance.now() + 60);
       });
-    }).catch(function () {});
+    }).catch(function () { });
   }
   function reshuffle() {
     runId++;
@@ -533,7 +543,7 @@
     portrait.classList.remove('show', 'instant'); portrait.setAttribute('aria-hidden', 'true');
     deckCards.forEach(function (c) { c.classList.remove('fly', 'chosen', 'taken'); c.tabIndex = 0; });
     after.hidden = true; welcome.hidden = false;
-    $('#heroTitle').textContent = 'Thư mời tốt nghiệp của Trần Hoàng Tuấn Minh';
+    $('#heroTitle').textContent = 'Thư mời tốt nghiệp Nguyễn Bùi Hoàng Phúc';
     deckCards[3].focus({ preventScroll: true });
   }
   deckCards.forEach(function (c) { c.addEventListener('click', function () { openDeck(c); }); });
@@ -578,12 +588,12 @@
   if (!reduce) {
     var lastX = 0, lastY = 0, acc = 0;
     window.addEventListener('pointermove', function (e) {
-      if (e.pointerType !== 'mouse' || document.documentElement.classList.contains('map-open')) return;
+      if (e.pointerType !== 'mouse') return;
       acc += Math.hypot(e.clientX - lastX, e.clientY - lastY); lastX = e.clientX; lastY = e.clientY;
       if (acc > 16) { acc = 0; addPart(fxParts, e.clientX, e.clientY + window.scrollY, { sp: rand(0.2, 0.9), g: 0.03, max: rand(450, 800), r: rand(2, 4.2) }); }
     }, { passive: true });
     window.addEventListener('pointerdown', function (e) {
-      if (document.documentElement.classList.contains('map-open')) return;
+
       for (var i = 0; i < 12; i++) addPart(fxParts, e.clientX, e.clientY + window.scrollY, { a: i / 12 * 6.283 + rand(-0.2, 0.2), sp: rand(2, 4), g: 0.05, max: rand(500, 800), r: rand(2.5, 5) });
     }, { passive: true });
   }
@@ -631,7 +641,7 @@
   var last = performance.now();
   function frame(now) {
     var dt = Math.min(50, now - last); last = now;
-    if (document.documentElement.classList.contains('map-open')) { requestAnimationFrame(frame); return; }
+
     var t = now / 1000;
     smooth += (window.scrollY - smooth) * Math.min(1, dt / 1000 * 7.5);
     vel = (smooth - prevSmooth) * (16.67 / Math.max(1, dt)); prevSmooth = smooth;
